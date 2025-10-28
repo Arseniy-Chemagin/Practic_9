@@ -1,25 +1,57 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp23", "ConsoleApp23\ConsoleApp23.csproj", "{1480F88E-FA7D-493B-9E6A-B356406496EC}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1480F88E-FA7D-493B-9E6A-B356406496EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1480F88E-FA7D-493B-9E6A-B356406496EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1480F88E-FA7D-493B-9E6A-B356406496EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1480F88E-FA7D-493B-9E6A-B356406496EC}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {6222D1E3-F85C-4834-8DFB-0B7F16576E1C}
-	EndGlobalSection
-EndGlobal
+﻿using System;
+
+public class Person
+{
+    private string name;
+    private int age;
+
+    public string Name
+    {
+        get { return name; }
+        set { name = value; }
+    }
+
+    public int Age
+    {
+        get { return return age; }
+        set
+        {
+            if (value >= 0 && value <= 120)
+            {
+                age = value;
+            }
+            else
+            {
+                Console.WriteLine("Возраст должен быть от 0 до 120!");
+                age = 0;
+            }
+        }
+    }
+
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    public void SayHello()
+    {
+        Console.WriteLine($"Привет, я {Name}, мне {Age} лет!");
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Person person1 = new Person("Арсений", 17);
+        person1.SayHello();
+
+        Person person2 = new Person("Арсений", 150);
+        person2.SayHello();
+
+        Person person3 = new Person("Арсений", -5);
+        person3.SayHello();
+    }
+}
+
